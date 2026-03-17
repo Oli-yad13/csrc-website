@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { format } from 'date-fns'
 import styles from './page.module.css'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import type { SanityImageSource } from '@sanity/image-url'
 
 type BlogCategory = {
   title: string

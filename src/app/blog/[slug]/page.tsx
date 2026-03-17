@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { PortableTextBlock } from '@portabletext/types'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import type { SanityImageSource } from '@sanity/image-url'
 
 type BlogCategory = {
   title: string
