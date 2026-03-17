@@ -1,0 +1,240 @@
+.main {
+    background-color: #FDFBF7;
+}
+
+/* Hero Section */
+.heroSection {
+    padding: 8rem 0 4rem;
+    background-color: #FDFBF7;
+}
+
+.breadcrumb {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 4px 12px;
+    background-color: transparent;
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+.heroText {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 850px;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+/* Team Listings Section */
+.teamSection {
+    padding: 2rem 0 6rem;
+    background-color: #FDFBF7;
+}
+
+.teamCategory {
+    margin-bottom: 5rem;
+}
+
+.categoryTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+}
+
+.membersList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Card: photo left, info right */
+.memberCard {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0;
+    align-items: start;
+    border-top: 1px solid var(--color-border);
+    padding: 2.5rem 0;
+}
+
+.memberCard:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Photo Column */
+.memberPhotoCol {
+    padding-right: 3rem;
+}
+
+.memberPhoto {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.memberPhotoPlaceholder {
+    width: 100%;
+    aspect-ratio: 330 / 378;
+    background-color: #E8E4DE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memberInitials {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 0.05em;
+}
+
+/* Info Column */
+.memberInfo {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.25rem;
+}
+
+.memberName {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.memberTitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.memberDesc {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    max-width: 680px;
+}
+
+.connectBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.connectLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.connectLink {
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+}
+
+.connectLink:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Opportunities Section CTA */
+.opportunitiesSection {
+    padding: 6rem 0 8rem;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+}
+
+.oppTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.oppText {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+    max-width: 600px;
+}
+
+.outlineBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border: 1px solid #111;
+    background: transparent;
+    color: #111;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pageTitle {
+        font-size: 3rem;
+    }
+
+    .categoryTitle {
+        font-size: 2.25rem;
+    }
+
+    .memberCard {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .memberPhotoCol {
+        padding-right: 0;
+    }
+
+    .memberPhotoPlaceholder {
+        aspect-ratio: 4 / 3;
+    }
+
+    .heroSection {
+        padding: 6rem 0 3rem;
+    }
+}

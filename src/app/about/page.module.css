@@ -1,0 +1,189 @@
+.main {
+    background-color: #FDFBF7;
+}
+
+/* Base styles */
+.sectionTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Hero Section */
+.heroSection {
+    padding: 8rem 0 6rem;
+    background-color: #FDFBF7;
+}
+
+.breadcrumb {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 4px 12px;
+    background-color: transparent;
+    margin-bottom: 2rem;
+    text-transform: none;
+    /* Keep original casing */
+}
+
+.pageTitle {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.heroText {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 850px;
+    font-weight: 300;
+}
+
+/* Mission Section */
+.missionSection {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.missionGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .missionGrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.missionTextCol {
+    padding-right: 2rem;
+}
+
+.missionText {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.missionImageCol {
+    width: 100%;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.missionImage {
+    border-radius: 8px;
+}
+
+/* Impact Section */
+.impactSection {
+    padding: 6rem 0 8rem;
+    background-color: var(--color-primary);
+    /* CSRC Green */
+}
+
+.impactSection .sectionTitle {
+    margin-bottom: 4rem;
+    color: #ffffff;
+}
+
+.impactGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .impactGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .impactGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.impactItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.impactTitle {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.impactText {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Get in touch / CTA Section */
+.ctaSection {
+    padding: 8rem 0;
+    background-color: #FDFBF7;
+}
+
+.ctaContent {
+    max-width: 800px;
+}
+
+.ctaSection .sectionTitle {
+    margin-bottom: 1.5rem;
+}
+
+.ctaText {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.outlineBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border: 1px solid #111;
+    background: transparent;
+    color: #111;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+    background: #111;
+    color: #fff;
+}

@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+
+:root {
+  /* Color Palette - Updated to match ICS Cream/Warmth */
+  --color-primary: #589140;
+  /* CSRC Green */
+  --color-primary-dark: #467533;
+  --color-secondary: #1A1A1A;
+  --color-accent: #DAA520;
+
+  /* The "ICS White" is actually a very subtle warm cream/off-white */
+  --color-bg: #FDFBF7;
+  --color-bg-alt: #F4F4F4;
+  --color-bg-dark: #1A1A1A;
+
+  --color-text: #1A1A1A;
+  --color-text-muted: #595959;
+  --color-border: #E6E6E6;
+
+  /* Typography */
+  --font-sans: var(--font-inter), Helvetica, Arial, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, "Times New Roman", Times, serif;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 5rem;
+  --spacing-xxl: 7.5rem;
+
+  /* Layout */
+  --container-width: 1320px;
+  --header-height: 100px;
+  /* Slightly taller for logo */
+
+  /* Utils */
+  --radius-sm: 0px;
+  --radius-md: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  /* Applies the cream background globally */
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilities */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50px;
+  /* Rounded pill buttons like ICS often uses */
+  font-weight: 500;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-secondary);
+  color: white;
+  border-color: var(--color-secondary);
+}

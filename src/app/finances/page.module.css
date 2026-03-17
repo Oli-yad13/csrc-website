@@ -1,0 +1,247 @@
+.main {
+    background-color: #FDFBF7;
+}
+
+/* Hero */
+.heroSection {
+    padding: 8rem 0 5rem;
+    background-color: #FDFBF7;
+}
+
+.breadcrumb {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 4px 12px;
+    background-color: transparent;
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.heroText {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 850px;
+    font-weight: 300;
+}
+
+/* Section Title */
+.sectionTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sectionSubtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    max-width: 750px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+/* Highlights */
+.highlightsSection {
+    padding: 4rem 0;
+    background-color: var(--color-primary);
+    border-top: 1px solid var(--color-border);
+}
+
+.highlightsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.highlightCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.highlightValue {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.highlightLabel {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+/* Funding Sources */
+.fundingSection {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+}
+
+.fundingGroup {
+    margin-bottom: 3rem;
+}
+
+.fundingGroup:last-child {
+    margin-bottom: 0;
+}
+
+.fundingCategory {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.fundingList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+}
+
+.fundingItem {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.fundingName {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+
+/* Financial Practices */
+.practicesSection {
+    padding: 6rem 0;
+    background-color: #FDFBF7;
+    border-top: 1px solid var(--color-border);
+}
+
+.practicesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.practiceCard {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+}
+
+.practiceTitle {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+}
+
+.practiceDesc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+}
+
+/* CTA */
+.ctaSection {
+    padding: 6rem 0 8rem;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+}
+
+.ctaContent {
+    max-width: 620px;
+}
+
+.ctaTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.ctaText {
+    font-size: 1.35rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.outlineBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border: 1px solid #111;
+    background: transparent;
+    color: #111;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .highlightsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pageTitle {
+        font-size: 3rem;
+    }
+
+    .sectionTitle {
+        font-size: 2.5rem;
+    }
+
+    .highlightsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .fundingList {
+        grid-template-columns: 1fr;
+    }
+
+    .practicesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heroSection {
+        padding: 6rem 0 3rem;
+    }
+}

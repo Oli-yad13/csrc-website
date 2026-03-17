@@ -1,0 +1,347 @@
+.main {
+    background-color: #FDFBF7;
+}
+
+/* Hero Section */
+.heroSection {
+    padding: 8rem 0 5rem;
+    background-color: #FDFBF7;
+}
+
+.breadcrumb {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 4px 12px;
+    background-color: transparent;
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.heroText {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 850px;
+    font-weight: 300;
+}
+
+/* Overview Section */
+.overviewSection {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+}
+
+.overviewGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.overviewText {
+    padding-right: 2rem;
+}
+
+.overviewPara {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.overviewImageCol {
+    width: 100%;
+}
+
+.overviewImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Leadership Section */
+.leadershipSection {
+    padding: 6rem 0;
+    background-color: #FDFBF7;
+    border-top: 1px solid var(--color-border);
+}
+
+.leadershipGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.leadershipImageCol {
+    width: 100%;
+}
+
+.leadershipImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.leadershipText {
+    padding-left: 2rem;
+}
+
+.leadershipPara {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+/* Section Title (shared) */
+.sectionTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sectionSubtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 750px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+/* Strategic Ambitions */
+.ambitionsSection {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+}
+
+.ambitionsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.ambitionCard {
+    background: #FDFBF7;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ambitionCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.ambitionImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: var(--color-bg-alt);
+}
+
+.ambitionImageWrapper img {
+    object-fit: cover;
+}
+
+.ambitionContent {
+    padding: 2rem;
+}
+
+.ambitionTitle {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+.ambitionDesc {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+}
+
+/* Programmatic Initiatives */
+.initiativesSection {
+    padding: 6rem 0;
+    background-color: #FDFBF7;
+    border-top: 1px solid var(--color-border);
+}
+
+.initiativesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.initiativeCard {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.initiativeCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.initiativeImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: var(--color-bg-alt);
+}
+
+.initiativeImageWrapper img {
+    object-fit: cover;
+}
+
+.initiativeContent {
+    padding: 1.75rem;
+}
+
+.initiativeTitle {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+}
+
+.initiativeDesc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+}
+
+/* Shared */
+.cardLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: gap 0.2s ease;
+}
+
+.cardLink:hover {
+    gap: 10px;
+}
+
+.outlineBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border: 1px solid #111;
+    background: transparent;
+    color: #111;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* CTA Section */
+.ctaSection {
+    padding: 6rem 0 8rem;
+    background-color: #ffffff;
+    border-top: 1px solid var(--color-border);
+}
+
+.ctaContent {
+    max-width: 620px;
+}
+
+.ctaTitle {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.ctaText {
+    font-size: 1.35rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .ambitionsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .initiativesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pageTitle {
+        font-size: 3rem;
+    }
+
+    .sectionTitle {
+        font-size: 2.5rem;
+    }
+
+    .overviewGrid,
+    .leadershipGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .overviewText,
+    .leadershipText {
+        padding: 0;
+    }
+
+    .initiativesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heroSection {
+        padding: 6rem 0 3rem;
+    }
+}
