@@ -21,6 +21,14 @@ type BlogPost = {
   featured?: boolean;
 };
 
+const insightFallbackImages = [
+  '/CSSP2 SOM/CSSP2 SOM/photo_2025-11-28_16-04-02.jpg',
+  '/CSSP2 SOM/CSSP2 SOM/photo_2025-11-28_15-57-23.jpg',
+  '/images/consortium-people.png',
+  '/cso lab.jpg',
+  '/UN women/UN women/photo_2025-11-28_16-11-19.jpg',
+];
+
 async function getRecentPosts(): Promise<BlogPost[]> {
   try {
     return await client.fetch<BlogPost[]>(recentBlogPostsQuery);
@@ -31,6 +39,16 @@ async function getRecentPosts(): Promise<BlogPost[]> {
 
 function formatDate(dateStr: string) {
   return format(new Date(dateStr), 'MMM d, yyyy');
+}
+
+function getInsightImage(post: BlogPost | null, index: number, featured = false) {
+  if (post?.mainImage) {
+    return urlFor(post.mainImage).width(featured ? 900 : 600).height(featured ? 600 : 400).url();
+  }
+
+  return featured
+    ? insightFallbackImages[0]
+    : insightFallbackImages[(index + 1) % insightFallbackImages.length];
 }
 
 export default async function LatestInsights() {
@@ -65,15 +83,13 @@ export default async function LatestInsights() {
         {useSanity && featuredPost ? (
           <Link href={`/blog/${featuredPost.slug.current}`} className={styles.featured}>
             <div className={styles.featuredImage}>
-              {featuredPost.mainImage && (
-                <Image
-                  src={urlFor(featuredPost.mainImage).width(900).height(600).url()}
-                  alt={featuredPost.mainImage.alt || featuredPost.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  priority
-                />
-              )}
+              <Image
+                src={getInsightImage(featuredPost, 0, true)}
+                alt={featuredPost.mainImage?.alt || featuredPost.title}
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+              />
             </div>
             <div className={styles.featuredContent}>
               <div className={styles.featuredMetaRow}>
@@ -146,21 +162,19 @@ export default async function LatestInsights() {
         {/* ── Highlights grid ── */}
         <div className={styles.highlightsGrid}>
           {useSanity ? (
-            gridPosts.map((post) => (
+            gridPosts.map((post, index) => (
               <Link
                 key={post._id}
                 href={`/blog/${post.slug.current}`}
                 className={styles.card}
               >
                 <div className={styles.cardImage}>
-                  {post.mainImage && (
-                    <Image
-                      src={urlFor(post.mainImage).width(600).height(400).url()}
-                      alt={post.mainImage.alt || post.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                  )}
+                  <Image
+                    src={getInsightImage(post, index)}
+                    alt={post.mainImage?.alt || post.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
                 <div className={styles.cardBody}>
                   <p className={styles.cardEyebrow}>
