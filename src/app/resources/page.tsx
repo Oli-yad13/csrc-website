@@ -1,11 +1,42 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { resources } from '@/content/csrcContent';
+import Image from 'next/image';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
+import { resourcesQuery } from '@/sanity/lib/queries';
+import { resources as staticResources } from '@/content/csrcContent';
+import type { SanityImageSource } from '@sanity/image-url';
 import styles from './page.module.css';
+
+type SanityResource = {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  description?: string;
+  type?: string;
+  theme?: string;
+  source?: string;
+  image?: { alt?: string } & SanityImageSource;
+  linkType?: 'url' | 'file';
+  externalUrl?: string;
+  fileUrl?: string;
+  publishedAt?: string;
+  featured?: boolean;
+};
+
+async function getResources(): Promise<SanityResource[]> {
+  try {
+    return await client.fetch<SanityResource[]>(resourcesQuery);
+  } catch {
+    return [];
+  }
+}
 
 const themes = ['Knowledge hub', 'Legal guidance', 'Funding context', 'Programme briefs'];
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const sanityResources = await getResources();
+  const hasSanityContent = sanityResources.length > 0;
+
   return (
     <main className={styles.main}>
       <section className={styles.heroSection}>
@@ -39,30 +70,99 @@ export default function ResourcesPage() {
 
       <section className={styles.resourcesSection}>
         <div className="container">
-          <div className={styles.resourcesGrid}>
-            {resources.map((resource) => (
-              <a
-                key={resource.href}
-                href={resource.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.resourceCard}
-              >
-                <div className={styles.resourceImageWrapper}>
-                  <Image src={resource.image} alt={resource.title} fill style={{ objectFit: 'cover' }} />
-                  <span className={styles.resourceType}>{resource.type}</span>
-                </div>
-                <div className={styles.resourceContent}>
-                  <span className={styles.resourceTheme}>{resource.theme}</span>
-                  <h3 className={styles.resourceTitle}>{resource.title}</h3>
-                  <p className={styles.resourceDesc}>{resource.description}</p>
-                  <p className={styles.resourceDesc} style={{ marginTop: '1rem', fontWeight: 500 }}>
-                    {resource.linkLabel} · {resource.source}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
+          {hasSanityContent ? (
+            <div className={styles.resourcesGrid}>
+              {sanityResources.map((resource) => {
+                const href =
+                  resource.linkType === 'file'
+                    ? resource.fileUrl
+                    : resource.externalUrl;
+
+                const imageUrl = resource.image
+                  ? urlFor(resource.image).width(600).height(400).url()
+                  : null;
+
+                const card = (
+                  <div className={styles.resourceCard}>
+                    <div className={styles.resourceImageWrapper}>
+                      {imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={
+                            (resource.image && 'alt' in resource.image
+                              ? (resource.image as { alt?: string }).alt
+                              : undefined) || resource.title
+                          }
+                          fill
+                          style={{ objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <div className={styles.resourceImagePlaceholder} />
+                      )}
+                      {resource.type && (
+                        <span className={styles.resourceType}>{resource.type}</span>
+                      )}
+                    </div>
+                    <div className={styles.resourceContent}>
+                      {resource.theme && (
+                        <span className={styles.resourceTheme}>{resource.theme}</span>
+                      )}
+                      <h3 className={styles.resourceTitle}>{resource.title}</h3>
+                      {resource.description && (
+                        <p className={styles.resourceDesc}>{resource.description}</p>
+                      )}
+                      {resource.source && (
+                        <p className={styles.resourceDesc} style={{ marginTop: '1rem', fontWeight: 500 }}>
+                          {resource.linkType === 'file' ? 'Download' : 'View'} · {resource.source}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+
+                if (href) {
+                  return (
+                    <a
+                      key={resource._id}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.resourceCardLink}
+                    >
+                      {card}
+                    </a>
+                  );
+                }
+                return <div key={resource._id}>{card}</div>;
+              })}
+            </div>
+          ) : (
+            // Fallback to static content while Sanity is being populated
+            <div className={styles.resourcesGrid}>
+              {staticResources.map((resource) => (
+                <a
+                  key={resource.href}
+                  href={resource.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.resourceCard}
+                >
+                  <div className={styles.resourceImageWrapper}>
+                    <Image src={resource.image} alt={resource.title} fill style={{ objectFit: 'cover' }} />
+                    <span className={styles.resourceType}>{resource.type}</span>
+                  </div>
+                  <div className={styles.resourceContent}>
+                    <span className={styles.resourceTheme}>{resource.theme}</span>
+                    <h3 className={styles.resourceTitle}>{resource.title}</h3>
+                    <p className={styles.resourceDesc}>{resource.description}</p>
+                    <p className={styles.resourceDesc} style={{ marginTop: '1rem', fontWeight: 500 }}>
+                      {resource.linkLabel} · {resource.source}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -155,6 +155,13 @@ export default defineType({
         layout: 'tags',
       },
     }),
+    defineField({
+      name: 'featured',
+      title: 'Featured post',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Pin this post as the lead feature on the home page',
+    }),
   ],
   preview: {
     select: {
