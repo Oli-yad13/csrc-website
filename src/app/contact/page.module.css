@@ -12,10 +12,36 @@
 
 /* ── Hero ── */
 .heroSection {
+    position: relative;
+    overflow: hidden;
     padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
+/* Subtle dot grid */
+.heroSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(22, 32, 51, 0.055) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Concentric rings — top-right corner */
+.decorRings {
+    position: absolute;
+    top: -90px;
+    right: -70px;
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 0;
+}
+
 .heroGrid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
     gap: 1.5rem;
@@ -120,12 +146,37 @@
     transform: translateY(-1px);
 }
 
-/* ── Hero detail card (address + hours) ── */
+/* ── Hero detail card (illustration + contact facts) ── */
 .heroDetailCard {
     display: flex;
     flex-direction: column;
-    padding: clamp(1.4rem, 2.5vw, 2rem);
-    gap: 1.6rem;
+    overflow: hidden;
+    padding: 0;
+    gap: 0;
+}
+
+.detailIllustration {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 1.6rem 2rem;
+    background: linear-gradient(135deg, rgba(86, 127, 61, 0.13) 0%, rgba(22, 32, 51, 0.05) 100%);
+    border-bottom: 1px solid rgba(22, 32, 51, 0.08);
+}
+
+.networkSvg {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+}
+
+.detailContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding: clamp(1.3rem, 2.5vw, 1.8rem);
 }
 
 .detailBlock {
