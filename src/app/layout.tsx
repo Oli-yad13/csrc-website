@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 import "./globals.css";
 
 const inter = localFont({
@@ -49,11 +48,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.variable}>
-        <Header />
-        <main>
+        <SiteChrome>
           {children}
-        </main>
-        <Footer />
+        </SiteChrome>
       </body>
     </html>
   );
