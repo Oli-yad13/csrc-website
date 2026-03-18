@@ -84,5 +84,26 @@ export const resourcesQuery = `*[_type == "resource"] | order(publishedAt desc) 
   externalUrl,
   "fileUrl": file.asset->url,
   publishedAt,
-  featured
+  featured,
+  "hasBody": defined(body) && length(body) > 0
+}`
+
+export const resourceBySlugQuery = `*[_type == "resource" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  description,
+  type,
+  theme,
+  source,
+  image,
+  linkType,
+  externalUrl,
+  "fileUrl": file.asset->url,
+  publishedAt,
+  body
+}`
+
+export const resourceSlugsQuery = `*[_type == "resource" && defined(slug.current) && defined(body) && length(body) > 0][] {
+  "slug": slug.current
 }`

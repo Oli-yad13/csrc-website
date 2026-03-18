@@ -101,6 +101,42 @@ export default defineType({
       hidden: ({ document }) => (document?.linkType as string) !== 'file',
     }),
     defineField({
+      name: 'body',
+      title: 'Full Content',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Heading 2', value: 'h2' },
+            { title: 'Heading 3', value: 'h3' },
+            { title: 'Quote', value: 'blockquote' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' },
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab' },
+                ],
+              },
+            ],
+          },
+        },
+        { type: 'image', options: { hotspot: true } },
+      ],
+      description: 'Full readable content shown on the resource detail page.',
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published At',
       type: 'datetime',

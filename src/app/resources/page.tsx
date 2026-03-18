@@ -21,6 +21,7 @@ type SanityResource = {
   fileUrl?: string;
   publishedAt?: string;
   featured?: boolean;
+  hasBody?: boolean;
 };
 
 async function getResources(): Promise<SanityResource[]> {
@@ -73,10 +74,12 @@ export default async function ResourcesPage() {
           {hasSanityContent ? (
             <div className={styles.resourcesGrid}>
               {sanityResources.map((resource) => {
-                const href =
-                  resource.linkType === 'file'
-                    ? resource.fileUrl
-                    : resource.externalUrl;
+                // Prefer internal detail page if body content exists
+              const href = resource.hasBody
+                ? `/resources/${resource.slug.current}`
+                : resource.linkType === 'file'
+                ? resource.fileUrl
+                : resource.externalUrl;
 
                 const imageUrl = resource.image
                   ? urlFor(resource.image).width(600).height(400).url()
@@ -121,6 +124,13 @@ export default async function ResourcesPage() {
                 );
 
                 if (href) {
+                  if (resource.hasBody) {
+                    return (
+                      <Link key={resource._id} href={href} className={styles.resourceCardLink}>
+                        {card}
+                      </Link>
+                    );
+                  }
                   return (
                     <a
                       key={resource._id}
