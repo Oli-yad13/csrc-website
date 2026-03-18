@@ -56,16 +56,11 @@ export default function GovernancePage() {
         <div className="container">
           <h2 className={styles.sectionTitle}>Institutional model</h2>
           <div className={styles.boardGrid}>
-            {governanceModel.map((item) => (
+            {governanceModel.map((item, index) => (
               <div key={item.title} className={styles.boardCard}>
-                <div className={styles.boardPhotoPlaceholder}>
-                  <span className={styles.boardInitials}>
-                    {item.title
-                      .split(' ')
-                      .slice(0, 2)
-                      .map((part) => part[0])
-                      .join('')}
-                  </span>
+                <div className={styles.modelHeader}>
+                  <span className={styles.modelIndex}>{String(index + 1).padStart(2, '0')}</span>
+                  <span className={styles.modelEyebrow}>Institutional signal</span>
                 </div>
                 <h3 className={styles.boardName}>{item.title}</h3>
                 <p className={styles.boardBio}>{item.description}</p>

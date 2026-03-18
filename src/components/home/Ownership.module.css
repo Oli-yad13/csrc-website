@@ -110,6 +110,10 @@
     margin-top: var(--spacing-xxl);
 }
 
+.logosShell {
+    max-width: 1520px;
+}
+
 @media (max-width: 640px) {
     .section {
         padding: var(--spacing-xl) 0;

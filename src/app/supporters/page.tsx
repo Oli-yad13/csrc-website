@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { supporterSections } from '@/content/csrcContent';
 import styles from './page.module.css';
@@ -30,7 +31,18 @@ export default function SupportersPage() {
                 const CardContent = (
                   <>
                     <div className={styles.orgBadge}>
-                      <span className={styles.orgAbbr}>{org.abbr}</span>
+                      {org.logo ? (
+                        <Image
+                          src={org.logo}
+                          alt={org.name}
+                          width={80}
+                          height={56}
+                          className={styles.orgLogo}
+                          unoptimized
+                        />
+                      ) : (
+                        <span className={styles.orgAbbr}>{org.abbr}</span>
+                      )}
                     </div>
                     <div className={styles.orgDetails}>
                       <span className={styles.orgName}>{org.name}</span>

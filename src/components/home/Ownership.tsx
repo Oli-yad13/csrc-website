@@ -31,7 +31,7 @@ export default function Ownership() {
             
             {/* Logos Section */}
             <div className={styles.logosSection}>
-                <div className="container">
+                <div className={`container ${styles.logosShell}`}>
                     <PartnerCarousel partners={logoPartners} />
                 </div>
             </div>

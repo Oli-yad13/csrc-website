@@ -93,60 +93,67 @@
 
 .boardGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
 }
 
 .boardCard {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 18px;
     padding: 2rem;
     border: 1px solid var(--color-border);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.boardPhotoPlaceholder {
-    width: 100px;
-    height: 100px;
-    background-color: #E8E4DE;
-    border-radius: 50%;
+.modelHeader {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
+    justify-content: space-between;
+    gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
-.boardInitials {
-    font-family: var(--font-serif);
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: #999;
-    letter-spacing: 0.05em;
+.modelIndex,
+.modelEyebrow {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.4rem 0.78rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.modelIndex {
+    background: rgba(22, 32, 51, 0.07);
+    color: rgba(55, 69, 92, 0.72);
+}
+
+.modelEyebrow {
+    background: rgba(86, 127, 61, 0.12);
+    color: var(--color-primary-dark);
 }
 
 .boardName {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--color-secondary);
-    margin-bottom: 0.35rem;
-    line-height: 1.25;
-}
-
-.boardRole {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    display: block;
-    margin-bottom: 1rem;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .boardBio {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
     color: var(--color-text-muted);
-    line-height: 1.65;
-    font-weight: 300;
+    line-height: 1.75;
+    font-weight: 400;
 }
 
 /* Principles */
@@ -234,6 +241,10 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+    .boardGrid {
+        grid-template-columns: 1fr;
+    }
+
     .principlesGrid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -256,11 +267,6 @@
     .structureText {
         padding: 0;
     }
-
-    .boardGrid {
-        grid-template-columns: 1fr;
-    }
-
     .principlesGrid {
         grid-template-columns: 1fr;
     }

@@ -46,6 +46,7 @@ export type SupporterSection = {
     name: string;
     region: string;
     href: string | null;
+    logo?: string | null;
   }>;
 };
 
@@ -57,6 +58,7 @@ export type LogoPartner = {
 };
 
 export const heroContent = {
+  kicker: "Civil society resource centre for Ethiopia",
   title: "Civil society learning, resources, and sector support rooted in Ethiopia.",
   summary:
     "Founded in 2019, the Civil Society Resource Center works from Addis Ababa as a knowledge hub for civil society organisations, emerging actors, and sector partners. CSRC brings together information access, technical support, learning programmes, public dialogue, and partnership delivery so Ethiopian civil society can grow stronger, more connected, and better prepared for the future.",
@@ -64,14 +66,37 @@ export const heroContent = {
     label: "About CSRC",
     href: "/about",
   },
+  secondaryCta: {
+    label: "Explore featured work",
+    href: "#featured-work",
+  },
+  metrics: [
+    {
+      label: "Founded",
+      value: "2019",
+    },
+    {
+      label: "Based in",
+      value: "Addis Ababa",
+    },
+    {
+      label: "Working through",
+      value: "Programmes and partnerships",
+    },
+  ],
+  spotlight: {
+    label: "Current emphasis",
+    text:
+      "Capacity building, knowledge access, public-interest learning, and consortium delivery for civil society organisations across Ethiopia.",
+  },
   image: "/hero-collage.webp",
 };
 
 export const homeFeatured = {
   title: "CSF Plus launches with CSRC as a grant partner",
   excerpt:
-    "On its public LinkedIn page, CSRC announced the launch of the project 'Strengthening the Capacities, Independence, and Credibility of Local and Grassroots CSOs as Actors of Good Governance and Development in Ethiopia'. The EU-funded programme is led by Christian Aid with CSRC, ECSF, and CAAA, and CSRC says it leads implementation in Addis Ababa and the Central Ethiopia region.",
-  date: "Visible on CSRC LinkedIn, 2025",
+    "On its public page, CSRC announced the launch of the project 'Strengthening the Capacities, Independence, and Credibility of Local and Grassroots CSOs as Actors of Good Governance and Development in Ethiopia'. The EU-funded programme is led by Christian Aid with CSRC, ECSF, and CAAA, and CSRC says it leads implementation in Addis Ababa and the Central Ethiopia region.",
+  date: "Public notice, 2025",
   tags: ["CSF Plus", "Grassroots CSOs", "Capacity building"],
   image: "/CSSP2 SOM/CSSP2 SOM/photo_2025-11-28_16-04-02.jpg",
   href: "/programs/networks-and-ecosystem-strengthening",
@@ -80,7 +105,10 @@ export const homeFeatured = {
 export const homeHighlights = [
   {
     id: "leadership-pathway",
+    eyebrow: "Leadership support",
     title: "Leadership and fellowship pathways",
+    summary:
+      "Structured fellowships, short-format training, and practical mentoring for emerging civic leaders and recent graduates entering the sector.",
     date: "Programme area",
     image:
       "/Bogalech Gebre (ACLP) Fellowship/Bogalech Gebre (ACLP) Fellowship/photo_2025-11-28_15-44-29.jpg",
@@ -88,14 +116,20 @@ export const homeHighlights = [
   },
   {
     id: "rights-education",
+    eyebrow: "Rights practice",
     title: "Human rights education and advocacy",
+    summary:
+      "Training and advocacy work that connects rights literacy with field-facing organising, women human rights defenders, and civic participation.",
     date: "Programme area",
     image: "/UN women/UN women/photo_2025-11-28_16-11-19.jpg",
     href: "/programs/human-rights-education-and-advocacy",
   },
   {
     id: "moot-court",
+    eyebrow: "Legal learning",
     title: "Refugee law and public-interest learning",
+    summary:
+      "Public-interest legal education built around moot court formats, university collaboration, and refugee protection challenges in the region.",
     date: "Programme area",
     image:
       "/Refugee Law mootcourt/Refugee Law mootcourt/photo_2025-11-28_15-39-54.jpg",
@@ -103,14 +137,20 @@ export const homeHighlights = [
   },
   {
     id: "regulatory-support",
+    eyebrow: "Knowledge hub",
     title: "Knowledge and regulatory support",
+    summary:
+      "Guides, webinars, and practical operating resources for emerging civil society organisations navigating systems, reporting, and legal change.",
     date: "Knowledge hub",
     image: "/CSSP2 SOM/CSSP2 SOM/photo_2025-11-28_15-57-23.jpg",
     href: "/programs/knowledge-and-regulatory-support",
   },
   {
     id: "ecosystem-strengthening",
+    eyebrow: "Consortium work",
     title: "Networks and ecosystem strengthening",
+    summary:
+      "Shared learning, partner delivery, and support structures that help local and grassroots organisations move from isolation to collective strength.",
     date: "Partnership area",
     image: "/images/consortium-people.png",
     href: "/programs/networks-and-ecosystem-strengthening",
@@ -154,11 +194,6 @@ export const logoPartners: LogoPartner[] = [
     logo: "/logo/Ethiopian Civil Society Organizations Forum.png",
   },
   {
-    name: "CAAA",
-    fullName: "Chora Abugida Artistic Association",
-    logo: null,
-  },
-  {
     name: "Irish Aid",
     logo: "/logo/IrishAid_Std_Black_DFAT.original.png",
     href: "https://www.ireland.ie/en/irish-aid/",
@@ -178,6 +213,75 @@ export const logoPartners: LogoPartner[] = [
     name: "UN Women",
     logo: "/logo/unwomen_logo.png",
     href: "https://www.unwomen.org/en",
+  },
+  {
+    name: "ACSO",
+    fullName: "Authority for Civil Society Organizations",
+    logo: "/logo/Authority for Civil Society Organizations.png",
+    href: "https://www.csrc-et.org/",
+  },
+  {
+    name: "Freedom House",
+    logo: "/logo/Freedom_House.svg.png",
+    href: "https://freedomhouse.org/",
+  },
+  {
+    name: "USAID",
+    logo: "/logo/USAID-Identity.svg.png",
+    href: "https://www.usaid.gov/",
+  },
+  {
+    name: "NED",
+    fullName: "National Endowment for Democracy",
+    logo: "/logo/ned-logo.png",
+    href: "https://www.ned.org/",
+  },
+  {
+    name: "FCDO",
+    fullName: "Foreign, Commonwealth & Development Office",
+    logo: "/logo/FCDO-logo-800x600-1.png",
+    href: "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office",
+  },
+  {
+    name: "Open Society",
+    fullName: "Open Society Foundations",
+    logo: "/logo/open socety.png",
+    href: "https://www.opensocietyfoundations.org/",
+  },
+  {
+    name: "FES",
+    fullName: "Friedrich-Ebert-Stiftung",
+    logo: "/logo/csm_1_91_Linkvorschau_Logo_mittel_6a3282eeba.png",
+    href: "https://www.fes.de/en/",
+  },
+  {
+    name: "ACLP",
+    fullName: "African Civic Leadership Programme",
+    logo: "/logo/aclp logo.jpg",
+    href: "https://www.africancivicleadership.org/",
+  },
+  {
+    name: "SIDA",
+    fullName: "Swedish International Development Cooperation Agency",
+    logo: "/logo/sida-logo-png_seeklogo-357524.png",
+    href: "https://www.sida.se/en",
+  },
+  {
+    name: "ICNL",
+    fullName: "International Center for Not-for-Profit Law",
+    logo: "/logo/icnl.png",
+    href: "https://www.icnl.org/",
+  },
+  {
+    name: "NIMD",
+    fullName: "Netherlands Institute for Multiparty Democracy",
+    logo: "/logo/NIMD-Square.png",
+    href: "https://nimd.org/",
+  },
+  {
+    name: "MannionDaniels",
+    logo: "/logo/MC_Logo.png",
+    href: "https://manniondaniels.com/",
   },
 ];
 
@@ -232,7 +336,7 @@ export const programmes: Programme[] = [
     ],
     links: [
       {
-        label: "CSRC LinkedIn",
+        label: "CSRC public page",
         href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
       },
       {
@@ -272,7 +376,7 @@ export const programmes: Programme[] = [
         href: "https://www.csrc-et.org/",
       },
       {
-        label: "CSRC LinkedIn",
+        label: "CSRC public page",
         href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
       },
     ],
@@ -304,7 +408,7 @@ export const programmes: Programme[] = [
     ],
     links: [
       {
-        label: "CSRC LinkedIn",
+        label: "CSRC public page",
         href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
       },
     ],
@@ -422,7 +526,7 @@ export const programmes: Programme[] = [
     ],
     links: [
       {
-        label: "CSRC LinkedIn",
+        label: "CSRC public page",
         href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
       },
       {
@@ -488,9 +592,9 @@ export const resources: ResourceItem[] = [
     description:
       "The most reliable public source for recent calls, training notices, launches, and partnership updates while the main CSRC website is unstable.",
     image: "/images/consortium-people.png",
-    linkLabel: "Visit LinkedIn",
+    linkLabel: "Visit public page",
     href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
-    source: "LinkedIn",
+    source: "Public page",
   },
   {
     title: "African Civic Leadership Programme",
@@ -589,24 +693,63 @@ export const supporterSections: SupporterSection[] = [
         name: "Agence Francaise de Developpement",
         region: "France",
         href: "https://www.afd.fr/en/actualites/communique-de-presse/afd-strengthen-ethiopian-civil-society-relation-human-rights",
+        logo: "/logo/AFD_logo.svg.png",
       },
       {
         abbr: "EU",
         name: "European Union",
         region: "European Union",
         href: "https://www.christianaid.org.uk/get-involved/jobs/expressions-interest-civil-society-fund-plus-sub-grantee",
+        logo: "/logo/European-Union-Logo.jpg",
       },
       {
         abbr: "Irish Aid",
         name: "Irish Aid",
         region: "Ireland",
         href: "https://www.ireland.ie/en/irish-aid/",
+        logo: "/logo/IrishAid_Std_Black_DFAT.original.png",
       },
       {
         abbr: "NO",
         name: "Royal Norwegian Embassy",
         region: "Norway",
         href: "https://www.afd.fr/en/actualites/communique-de-presse/afd-strengthen-ethiopian-civil-society-relation-human-rights",
+        logo: "/logo/norwegian-embassy-ministry-ud-logo-engelsk-generations-for-peace-ngo-sponsor-donor-jordan-2014-gfp.png",
+      },
+      {
+        abbr: "USAID",
+        name: "USAID",
+        region: "United States",
+        href: "https://www.usaid.gov/",
+        logo: "/logo/USAID-Identity.svg.png",
+      },
+      {
+        abbr: "SIDA",
+        name: "Swedish International Development Cooperation Agency",
+        region: "Sweden",
+        href: "https://www.sida.se/en",
+        logo: "/logo/sida-logo-png_seeklogo-357524.png",
+      },
+      {
+        abbr: "FCDO",
+        name: "Foreign, Commonwealth & Development Office",
+        region: "United Kingdom",
+        href: "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office",
+        logo: "/logo/FCDO-logo-800x600-1.png",
+      },
+      {
+        abbr: "NED",
+        name: "National Endowment for Democracy",
+        region: "United States",
+        href: "https://www.ned.org/",
+        logo: "/logo/ned-logo.png",
+      },
+      {
+        abbr: "Open Society",
+        name: "Open Society Foundations",
+        region: "International",
+        href: "https://www.opensocietyfoundations.org/",
+        logo: "/logo/open socety.png",
       },
     ],
   },
@@ -621,18 +764,21 @@ export const supporterSections: SupporterSection[] = [
         name: "INTRAC",
         region: "United Kingdom",
         href: "https://www.intrac.org/projects/supporting-civil-society-in-ethiopia-through-csif/",
+        logo: "/logo/5b4914c4-1a38-43bb-84b5-19f747fc7f4b.png",
       },
       {
         abbr: "CA",
         name: "Christian Aid",
         region: "United Kingdom",
         href: "https://www.christianaid.org.uk/get-involved/jobs/expressions-interest-civil-society-fund-plus-sub-grantee",
+        logo: "/logo/CA_logo_600.png",
       },
       {
         abbr: "ECSF",
         name: "Ethiopian Civil Society Organizations Forum",
         region: "Ethiopia",
         href: "https://www.christianaid.org.uk/get-involved/jobs/expressions-interest-civil-society-fund-plus-sub-grantee",
+        logo: "/logo/Ethiopian Civil Society Organizations Forum.png",
       },
       {
         abbr: "CAAA",
@@ -651,6 +797,56 @@ export const supporterSections: SupporterSection[] = [
         name: "African Civic Leadership Programme",
         region: "Regional",
         href: "https://www.africancivicleadership.org/",
+        logo: "/logo/aclp logo.jpg",
+      },
+      {
+        abbr: "British Council",
+        name: "British Council",
+        region: "United Kingdom",
+        href: "https://www.britishcouncil.org/",
+        logo: "/logo/BritishCouncil_Logo.png",
+      },
+      {
+        abbr: "FES",
+        name: "Friedrich-Ebert-Stiftung",
+        region: "Germany",
+        href: "https://www.fes.de/en/",
+        logo: "/logo/csm_1_91_Linkvorschau_Logo_mittel_6a3282eeba.png",
+      },
+      {
+        abbr: "Freedom House",
+        name: "Freedom House",
+        region: "United States",
+        href: "https://freedomhouse.org/",
+        logo: "/logo/Freedom_House.svg.png",
+      },
+      {
+        abbr: "UN Women",
+        name: "UN Women",
+        region: "International",
+        href: "https://www.unwomen.org/en",
+        logo: "/logo/unwomen_logo.png",
+      },
+      {
+        abbr: "MC",
+        name: "MannionDaniels",
+        region: "United Kingdom",
+        href: "https://manniondaniels.com/",
+        logo: "/logo/MC_Logo.png",
+      },
+      {
+        abbr: "ICNL",
+        name: "International Center for Not-for-Profit Law",
+        region: "United States",
+        href: "https://www.icnl.org/",
+        logo: "/logo/icnl.png",
+      },
+      {
+        abbr: "NIMD",
+        name: "Netherlands Institute for Multiparty Democracy",
+        region: "Netherlands",
+        href: "https://nimd.org/",
+        logo: "/logo/NIMD-Square.png",
       },
     ],
   },
@@ -671,6 +867,7 @@ export const supporterSections: SupporterSection[] = [
         name: "Ethiopian Lawyers Association",
         region: "Ethiopia",
         href: "https://www.csinnovationfund.org/aboutcsif",
+        logo: "/logo/Ethiopia+Lawyers'+Association.webp",
       },
       {
         abbr: "IVIDE",
@@ -689,12 +886,42 @@ export const supporterSections: SupporterSection[] = [
         name: "Hawassa University School of Law",
         region: "Ethiopia",
         href: "https://www.csrc-et.org/national-refugee-law-moot-court-held-at-hawassa-university-school-of-law/",
+        logo: "/logo/Awasa_University.png",
       },
       {
         abbr: "ACSO",
         name: "Authority for Civil Society Organizations",
         region: "Ethiopia",
         href: "https://www.csrc-et.org/",
+        logo: "/logo/Authority for Civil Society Organizations.png",
+      },
+      {
+        abbr: "AAU",
+        name: "Addis Ababa University",
+        region: "Ethiopia",
+        href: null,
+        logo: "/logo/aauLogo.png",
+      },
+      {
+        abbr: "EHRC",
+        name: "Ethiopian Human Rights Commission",
+        region: "Ethiopia",
+        href: null,
+        logo: "/logo/EHRC-Logo_blue-svg-1.svg",
+      },
+      {
+        abbr: "EWLA",
+        name: "Ethiopian Women Lawyers Association",
+        region: "Ethiopia",
+        href: null,
+        logo: "/logo/EWLA-LOGO.jpg",
+      },
+      {
+        abbr: "LHR",
+        name: "Lawyers for Human Rights",
+        region: "Ethiopia",
+        href: null,
+        logo: "/logo/lhr.png",
       },
     ],
   },
@@ -760,8 +987,8 @@ export const financeHighlights = [
     value: "4 years",
   },
   {
-    label: "CSRC LinkedIn company size",
-    value: "11-50 staff",
+    label: "Publicly visible team size",
+    value: "13+ employees",
   },
 ];
 
@@ -821,7 +1048,7 @@ export const teamProfiles = [
     name: "Lidiya Musse",
     title: "Programme team",
     description:
-      "Lidiya Musse appears among publicly listed CSRC employees on LinkedIn, contributing to the programme-facing profile of the organisation.",
+      "Lidiya Musse appears among publicly listed CSRC employees on the public company profile, contributing to the programme-facing profile of the organisation.",
     linkedin: "https://et.linkedin.com/company/civilsocietyresourcecenter",
   },
   {
@@ -862,13 +1089,13 @@ export const opportunities = [
     type: "Recent public notice",
     date: "Deadline November 3, 2025",
     description:
-      "The public LinkedIn page shows a six-month fellowship call for recent graduates in law or related fields, with placement in an organisation working on disability rights.",
+      "The public company page shows a six-month fellowship call for recent graduates in law or related fields, with placement in an organisation working on disability rights.",
     href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
   },
   {
     title: "CSF Plus Expressions of Interest for smaller and emerging CSOs",
     type: "Recent public notice",
-    date: "Visible on CSRC LinkedIn, 2025",
+    date: "Public notice, 2025",
     description:
       "CSRC promoted an open EOI under the four-year EU-funded CSF Plus programme targeting smaller and emerging local and grassroots CSOs working on governance, democracy, peacebuilding, and human rights.",
     href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
@@ -890,7 +1117,7 @@ export const contactDetails = {
 
 export const publicSources = [
   {
-    label: "CSRC LinkedIn",
+    label: "CSRC public page",
     href: "https://et.linkedin.com/company/civilsocietyresourcecenter",
   },
   {

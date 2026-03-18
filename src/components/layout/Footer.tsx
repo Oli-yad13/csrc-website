@@ -52,7 +52,7 @@ export default function Footer() {
                     <div className={styles.linksCol}>
                         <h4 className={styles.colTitle}>Connect</h4>
                         <ul>
-                            <li><a href="https://et.linkedin.com/company/civilsocietyresourcecenter" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="https://et.linkedin.com/company/civilsocietyresourcecenter" target="_blank" rel="noopener noreferrer">Public page</a></li>
                             <li><a href="https://www.facebook.com/CSRCEthiopia" target="_blank" rel="noopener noreferrer">Facebook</a></li>
                             <li><a href="mailto:contact@csrc-et.org">Email Us</a></li>
                         </ul>

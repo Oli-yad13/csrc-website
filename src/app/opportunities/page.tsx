@@ -10,7 +10,7 @@ export default function OpportunitiesPage() {
           <h1 className={styles.pageTitle}>Recent calls and opportunities</h1>
           <p className={styles.heroText}>
             CSRC uses public channels for fellowships, programme calls, and consultancy notices.
-            The items below come from the public LinkedIn trail and should be treated as recent
+            The items below come from the public company trail and should be treated as recent
             reference points unless the linked source still shows an open deadline.
           </p>
         </div>

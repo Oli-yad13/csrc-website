@@ -3,52 +3,34 @@
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
+    display: grid;
+    grid-template-columns: minmax(0, 0.48fr) minmax(0, 1fr);
+    gap: 1rem 2rem;
+    align-items: end;
+    margin-bottom: 1.35rem;
 }
 
 .kicker {
     margin: 0;
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.72);
 }
 
-.controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.control {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    color: white;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.control:hover,
-.control:focus-visible {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-1px);
+.summary {
+    margin: 0;
+    max-width: 42rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
 }
 
 .viewport {
     position: relative;
+    overflow: hidden;
 }
 
 .viewport::before,
@@ -57,65 +39,69 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 56px;
+    width: 52px;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
 }
 
 .viewport::before {
     left: 0;
-    background: linear-gradient(90deg, rgba(12, 18, 31, 0.95), rgba(12, 18, 31, 0));
+    background: linear-gradient(90deg, rgba(14, 20, 35, 1) 0%, rgba(14, 20, 35, 0) 100%);
 }
 
 .viewport::after {
     right: 0;
-    background: linear-gradient(270deg, rgba(12, 18, 31, 0.95), rgba(12, 18, 31, 0));
+    background: linear-gradient(270deg, rgba(14, 20, 35, 1) 0%, rgba(14, 20, 35, 0) 100%);
 }
 
-.track {
+.marqueeTrack {
     display: flex;
-    gap: var(--spacing-md);
-    overflow-x: auto;
-    padding: 4px var(--spacing-xs) 8px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-behavior: smooth;
+    width: max-content;
+    gap: 1.2rem;
+    padding-right: 1.2rem;
+
+    will-change: transform;
 }
 
-.track::-webkit-scrollbar {
-    display: none;
+.item {
+    flex: 0 0 auto;
 }
 
 .card {
-    flex: 0 0 clamp(220px, 22vw, 276px);
-    min-height: 196px;
-    padding: 20px 18px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(241, 244, 237, 0.9));
+    display: flex;
+    width: clamp(190px, 15vw, 232px);
+    min-height: 112px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(241, 244, 237, 0.92));
     color: rgb(23, 33, 51);
     text-decoration: none;
-    scroll-snap-align: start;
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover,
 .card:focus-visible {
     transform: translateY(-3px);
-    border-color: rgba(180, 211, 161, 0.7);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    border-color: rgba(180, 211, 161, 0.55);
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.12),
+        0 3px 8px rgba(0, 0, 0, 0.06);
 }
 
 .logoFrame {
     display: flex;
+    width: 100%;
+    height: 74px;
     align-items: center;
     justify-content: center;
-    height: 96px;
-    margin-bottom: 18px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.82);
-    padding: 14px;
+    border-radius: 14px;
+    padding: 0.55rem;
 }
 
 .logoImage {
@@ -126,75 +112,70 @@
 
 .fallback {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 6px 4px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    text-align: center;
 }
 
 .fallbackCode {
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    font-size: 26px;
-    font-weight: 700;
+    font-family: var(--font-sans);
+    font-size: 1.35rem;
+    font-weight: 800;
     letter-spacing: 0.08em;
     color: rgb(23, 33, 51);
 }
 
 .fallbackLabel {
-    margin-top: 6px;
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.4;
-    color: rgb(89, 89, 89);
-}
-
-.cardText {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.cardTitle {
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.cardMeta {
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 400;
+    margin-top: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
     line-height: 1.45;
     color: rgb(89, 89, 89);
 }
 
+
+@media (prefers-reduced-motion: reduce) {
+    .marqueeTrack {
+        animation: none;
+    }
+}
+
 @media (max-width: 968px) {
-    .card {
-        flex-basis: clamp(200px, 48vw, 248px);
+    .header {
+        grid-template-columns: 1fr;
     }
 
     .viewport::before,
     .viewport::after {
-        width: 36px;
+        width: 34px;
+    }
+
+    .card {
+        width: clamp(172px, 42vw, 210px);
     }
 }
 
 @media (max-width: 640px) {
-    .header {
-        align-items: flex-start;
-        flex-direction: column;
+    .summary {
+        font-size: 0.92rem;
     }
 
     .card {
-        flex-basis: min(82vw, 250px);
-        min-height: 184px;
+        width: min(66vw, 188px);
+        min-height: 104px;
+        padding: 0.75rem 0.85rem;
     }
 
     .logoFrame {
-        height: 88px;
+        height: 66px;
+    }
+
+    .viewport::before,
+    .viewport::after {
+        width: 22px;
     }
 }

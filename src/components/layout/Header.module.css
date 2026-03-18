@@ -1,89 +1,114 @@
 .header {
-    height: var(--header-height);
-    background-color: transparent;
-    border-bottom: none;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1000;
-    padding-top: var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    background: rgba(251, 246, 238, 0.86);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .container {
     width: 100%;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 clamp(1.25rem, 3vw, 2.25rem);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: relative;
+}
+
+.mainRow {
+    min-height: var(--header-height);
+    justify-content: space-between;
+    gap: var(--spacing-lg);
 }
 
 .logoContainer {
     display: flex;
     align-items: center;
-    text-decoration: none;
-    gap: var(--spacing-sm);
-    z-index: 1001;
+    gap: 0.95rem;
+    flex-shrink: 0;
+}
+
+.brandBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.brandMark {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-primary-dark);
 }
 
 .brandName {
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    color: rgb(23, 33, 51);
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 30px;
-    text-transform: capitalize;
-    font-style: normal;
+    font-family: var(--font-sans);
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
 }
 
 .nav {
     display: flex;
-    gap: 2.5rem;
     align-items: center;
+    gap: 1.6rem;
+    margin-left: auto;
 }
 
 .navLink {
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    color: rgb(23, 33, 51);
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 30px;
-    font-style: normal;
-    transition: color 0.2s;
+    font-family: var(--font-sans);
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
     position: relative;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    text-decoration: none;
+    gap: 0.35rem;
+    padding: 0.35rem 0;
 }
 
-.navLink:hover {
-    color: var(--color-primary);
+.navLink::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.15rem;
+    height: 1px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
 }
 
-/* Dropdown Styles */
+.navLink:hover,
+.navLink:focus-visible {
+    color: var(--color-primary-dark);
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after {
+    transform: scaleX(1);
+}
+
 .dropdownContainer {
     position: relative;
 }
 
 .dropdownTrigger {
     cursor: pointer;
-    gap: 0.5rem;
     background: none;
     border: none;
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    color: rgb(23, 33, 51);
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 30px;
-    font-style: normal;
-    padding: 0;
+    padding: 0.35rem 0;
 }
 
 .dropdownArrow {
-    transition: transform 0.3s ease;
-    margin-left: 0.25rem;
+    transition: transform 0.24s ease;
 }
 
 .dropdownArrowOpen {
@@ -92,170 +117,101 @@
 
 .dropdownMenu {
     position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 0.75rem;
-    background-color: #ffffff;
-    border-radius: 0;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    min-width: 240px;
-    padding: 0;
+    top: calc(100% + 1rem);
+    left: -1rem;
+    min-width: 270px;
+    padding: 0.55rem;
+    border-radius: 22px;
+    background: rgba(255, 252, 247, 0.96);
+    border: 1px solid rgba(22, 32, 51, 0.08);
+    box-shadow: var(--shadow-sm);
     z-index: 1002;
-    animation: fadeInDown 0.2s ease-out;
-    border: none;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .dropdownItem {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.875rem 1.5rem;
-    color: rgb(23, 33, 51);
-    text-decoration: none;
-    font-family: Inter, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1.5;
-    transition: background-color 0.2s ease;
     gap: 1rem;
-    border-bottom: 1px solid #e8e8e8;
+    padding: 0.9rem 1rem;
+    color: var(--color-secondary);
+    border-radius: 16px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.93rem;
+    line-height: 1.45;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.dropdownItem:last-child {
-    border-bottom: none;
-}
-
-.dropdownItem:hover {
-    background-color: #fafafa;
-}
-
-.dropdownItem span {
-    flex: 1;
+.dropdownItem:hover,
+.dropdownItem:focus-visible {
+    background: rgba(86, 127, 61, 0.08);
+    transform: translateX(2px);
 }
 
 .dropdownItem svg {
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
+    opacity: 0.6;
     flex-shrink: 0;
-    width: 7px;
-    height: 7px;
-}
-
-.dropdownItem:hover svg {
-    opacity: 0.8;
 }
 
 .actions {
     display: flex;
-    gap: var(--spacing-md);
     align-items: center;
+    gap: 0.75rem;
 }
 
-/* Large desktop */
-@media (max-width: 1500px) {
-    .container {
-        padding: 0 var(--spacing-md);
-    }
-
-    .nav {
-        gap: 2rem;
-    }
-
-    .navLink {
-        font-size: 18px;
-    }
-
-    .brandName {
-        font-size: 18px;
-        line-height: 26px;
-    }
+.contactButton,
+.contactButtonMobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(22, 32, 51, 0.12);
+    background: rgba(255, 255, 255, 0.58);
+    color: var(--color-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-/* 13-inch MacBook Air / HP laptops (1440px) */
-@media (max-width: 1440px) {
-    .container {
-        padding: 0 var(--spacing-md);
-    }
-
-    .nav {
-        gap: 1.75rem;
-    }
-
-    .navLink {
-        font-size: 17px;
-    }
-
-    .brandName {
-        font-size: 17px;
-        line-height: 24px;
-    }
-
-    .logoContainer img {
-        height: 55px !important;
-    }
+.contactButton:hover,
+.contactButtonMobile:hover {
+    background: white;
+    border-color: rgba(22, 32, 51, 0.2);
+    transform: translateY(-1px);
 }
 
-/* Smaller 13-inch laptops (1280px) */
-@media (max-width: 1280px) {
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-
-    .nav {
-        gap: 1.5rem;
-    }
-
-    .navLink {
-        font-size: 16px;
-    }
-
-    .brandName {
-        font-size: 16px;
-        line-height: 22px;
-    }
-
-    .logoContainer img {
-        height: 50px !important;
-    }
+.contactButtonMobile {
+    display: none;
 }
 
-/* Mobile Menu Button */
 .menuButton {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 30px;
-    height: 24px;
+    width: 2rem;
+    height: 1.5rem;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001;
     position: relative;
+    z-index: 1001;
 }
 
 .menuButton span {
     width: 100%;
     height: 2px;
-    background-color: rgb(23, 33, 51);
-    border-radius: 2px;
+    background-color: var(--color-secondary);
+    border-radius: 999px;
     transition: all 0.3s ease;
     transform-origin: center;
 }
 
 .menuButtonOpen span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(7px, 6px);
 }
 
 .menuButtonOpen span:nth-child(2) {
@@ -263,22 +219,27 @@
 }
 
 .menuButtonOpen span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile Overlay */
 .mobileOverlay {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background-color: rgba(22, 32, 51, 0.24);
     z-index: 999;
 }
 
-/* Mobile Styles */
+@media (max-width: 1100px) {
+    .nav {
+        gap: 1.2rem;
+    }
+
+    .contactButton {
+        display: none;
+    }
+}
+
 @media (max-width: 968px) {
     .menuButton {
         display: flex;
@@ -288,17 +249,17 @@
         position: fixed;
         top: 0;
         right: -100%;
-        width: 280px;
+        width: min(340px, 100%);
         height: 100vh;
-        background-color: var(--color-bg);
+        background: linear-gradient(180deg, #fcf7ef 0%, #f4ebde 100%);
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        padding: calc(var(--header-height) + var(--spacing-lg)) var(--spacing-lg) var(--spacing-lg);
-        gap: 0;
+        padding: calc(var(--header-height) + 2rem) 1.5rem 2rem;
+        gap: 0.15rem;
         transition: right 0.3s ease;
         z-index: 1000;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: -12px 0 40px rgba(22, 32, 51, 0.1);
         overflow-y: auto;
     }
 
@@ -308,100 +269,58 @@
 
     .navLink {
         width: 100%;
-        padding: var(--spacing-md) 0;
-        font-size: 18px;
-        border-bottom: 1px solid var(--color-border);
+        justify-content: space-between;
+        padding: 1rem 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(22, 32, 51, 0.08);
     }
 
-    .navLink:last-child {
-        border-bottom: none;
+    .navLink::after {
+        display: none;
     }
 
     .dropdownContainer {
         width: 100%;
     }
 
-    .dropdownTrigger {
-        width: 100%;
-        justify-content: space-between;
-    }
-
     .dropdownMenu {
         position: static;
-        margin-top: 0.5rem;
-        margin-left: 0;
-        margin-bottom: 0.5rem;
-        box-shadow: none;
-        border: none;
-        border-left: 2px solid #e5e5e5;
-        border-radius: 0;
-        padding: 0.5rem 0;
+        margin: 0.25rem 0 0.75rem;
         min-width: auto;
         width: 100%;
-        background-color: transparent;
+        background: rgba(255, 255, 255, 0.52);
+        box-shadow: none;
+        border-radius: 20px;
     }
 
     .dropdownItem {
-        padding: 0.75rem 1rem;
-        font-size: 15px;
-        border-bottom: 1px solid #e5e5e5;
+        padding: 0.85rem 0.9rem;
+    }
+
+    .contactButtonMobile {
+        display: inline-flex;
+        margin-top: 1rem;
     }
 
     .mobileOverlay {
         display: block;
     }
-
-    .brandName {
-        font-size: 16px;
-        line-height: 22px;
-    }
-
-    .logoContainer img {
-        height: 50px !important;
-    }
 }
 
 @media (max-width: 640px) {
     .container {
-        padding: 0 var(--spacing-md);
-    }
-
-    .nav {
-        width: 100%;
-        right: -100%;
-    }
-
-    .navOpen {
-        right: 0;
+        padding: 0 1rem;
     }
 
     .brandName {
-        font-size: 14px;
-        line-height: 20px;
+        font-size: 0.92rem;
     }
 
-    .logoContainer {
-        gap: var(--spacing-xs);
-    }
-
-    .logoContainer img {
-        height: 45px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        height: auto;
-        min-height: var(--header-height);
-        padding: var(--spacing-sm) 0;
-    }
-
-    .brandName {
-        font-size: 12px;
-        line-height: 18px;
+    .brandMark {
+        font-size: 10px;
     }
 
     .logoContainer img {
-        height: 40px !important;
+        height: 50px !important;
     }
 }

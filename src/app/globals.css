@@ -1,42 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Public+Sans:wght@400;500;600;700&display=swap");
 
 :root {
-  /* Color Palette - Updated to match ICS Cream/Warmth */
-  --color-primary: #589140;
-  /* CSRC Green */
-  --color-primary-dark: #467533;
-  --color-secondary: #1A1A1A;
-  --color-accent: #DAA520;
-
-  /* The "ICS White" is actually a very subtle warm cream/off-white */
-  --color-bg: #FDFBF7;
-  --color-bg-alt: #F4F4F4;
-  --color-bg-dark: #1A1A1A;
-
-  --color-text: #1A1A1A;
-  --color-text-muted: #595959;
-  --color-border: #E6E6E6;
-
-  /* Typography */
-  --font-sans: var(--font-inter), Helvetica, Arial, sans-serif;
-  --font-serif: "DM Serif Display", Georgia, "Times New Roman", Times, serif;
-
-  /* Spacing */
+  --color-primary: #567f3d;
+  --color-primary-dark: #3f612d;
+  --color-primary-soft: #dce8cd;
+  --color-secondary: #162033;
+  --color-accent: #8f6c38;
+  --color-bg: #fbf6ee;
+  --color-bg-alt: #f1e9dc;
+  --color-bg-strong: #e7dccb;
+  --color-bg-dark: #182132;
+  --color-surface: rgba(255, 253, 249, 0.86);
+  --color-text: #162033;
+  --color-text-muted: #58657a;
+  --color-border: rgba(22, 32, 51, 0.12);
+  --color-border-strong: rgba(22, 32, 51, 0.24);
+  --color-shadow: rgba(22, 32, 51, 0.08);
+  --font-sans: "Public Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
-  --spacing-xl: 5rem;
-  --spacing-xxl: 7.5rem;
-
-  /* Layout */
-  --container-width: 1320px;
-  --header-height: 100px;
-  /* Slightly taller for logo */
-
-  /* Utils */
-  --radius-sm: 0px;
-  --radius-md: 4px;
+  --spacing-xl: 4.5rem;
+  --spacing-xxl: 7rem;
+  --container-width: 1280px;
+  --header-height: 88px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 12px 26px var(--color-shadow);
+  --shadow-md: 0 24px 52px rgba(22, 32, 51, 0.12);
 }
 
 * {
@@ -49,12 +43,17 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg);
-  /* Applies the cream background globally */
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 32%),
+    linear-gradient(180deg, #f7f0e4 0%, #fbf7ef 34%, #f7f1e7 100%);
 }
 
 h1,
@@ -65,7 +64,12 @@ h5,
 h6 {
   font-family: var(--font-serif);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--color-text-muted);
 }
 
 a {
@@ -79,28 +83,37 @@ img {
   display: block;
 }
 
-/* Utilities */
+::selection {
+  background: rgba(86, 127, 61, 0.18);
+  color: var(--color-secondary);
+}
+
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 clamp(1.25rem, 3vw, 2.25rem);
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
-  background-color: var(--color-primary);
+  gap: 0.55rem;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--color-secondary);
   color: white;
-  border-radius: 50px;
-  /* Rounded pill buttons like ICS often uses */
-  font-weight: 500;
+  border-radius: 999px;
+  font-weight: 600;
   font-family: var(--font-sans);
-  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
   cursor: pointer;
-  border: none;
-  font-size: 1rem;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
 }
 
 .btn:hover {
@@ -110,12 +123,21 @@ img {
 
 .btn-outline {
   background-color: transparent;
-  border: 1px solid var(--color-secondary);
+  border-color: var(--color-border-strong);
   color: var(--color-secondary);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-secondary);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.65);
   border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
