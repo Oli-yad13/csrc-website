@@ -8,25 +8,19 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { PortableTextBlock } from '@portabletext/types'
 import type { SanityImageSource } from '@sanity/image-url'
+import styles from './page.module.css'
 
 type BlogCategory = {
   title: string
-  slug: {
-    current: string
-  }
+  slug: { current: string }
 }
 
 type BlogPost = {
   title: string
   excerpt?: string
   publishedAt?: string
-  mainImage?: {
-    alt?: string
-  } & SanityImageSource
-  author?: {
-    name: string
-    image?: SanityImageSource
-  }
+  mainImage?: { alt?: string } & SanityImageSource
+  author?: { name: string; image?: SanityImageSource }
   categories?: BlogCategory[]
   tags?: string[]
   content?: PortableTextBlock[]
@@ -50,9 +44,7 @@ async function getAllSlugs() {
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs()
-  return slugs.map((post: { slug: string }) => ({
-    slug: post.slug,
-  }))
+  return slugs.map((post) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({
@@ -62,22 +54,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const post = await getBlogPost(slug)
-
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    }
-  }
-
+  if (!post) return { title: 'Post Not Found' }
   return {
-    title: post.title,
+    title: `${post.title} — CSRC`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: post.mainImage
-        ? [urlFor(post.mainImage).width(1200).height(630).url()]
-        : [],
+      images: post.mainImage ? [urlFor(post.mainImage).width(1200).height(630).url()] : [],
     },
   }
 }
@@ -92,107 +76,97 @@ export default async function BlogPostPage({
 
   if (!post) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-2xl font-bold mb-4">Post Not Found</h1>
-        <Link href="/blog" className="text-blue-600 hover:underline">
-          ← Back to Blog
-        </Link>
-      </div>
+      <main className={styles.main}>
+        <div className={`container ${styles.notFound}`}>
+          <h1 className={styles.notFoundTitle}>Post not found</h1>
+          <Link href="/blog" className={styles.backLink}>← Back to Insights</Link>
+        </div>
+      </main>
     )
   }
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
-      <header className="mb-8">
-        {post.categories && post.categories.length > 0 && (
-          <div className="mb-4 flex flex-wrap gap-2">
-            {post.categories.map((category) => (
-              <span
-                key={category.slug.current}
-                className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
-              >
-                {category.title}
-              </span>
+    <main className={styles.main}>
+      {/* ── Hero ── */}
+      <section className={styles.hero}>
+        <div className={styles.shell}>
+          <Link href="/blog" className={styles.backLink}>← All insights</Link>
+
+          <div className={styles.metaRow}>
+            {post.categories?.map((cat) => (
+              <span key={cat.slug.current} className={styles.category}>{cat.title}</span>
             ))}
+            {post.publishedAt && (
+              <span className={styles.datePill}>
+                {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
+              </span>
+            )}
           </div>
-        )}
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
+          <h1 className={styles.title}>{post.title}</h1>
 
-        {post.excerpt && (
-          <p className="text-xl text-gray-600 mb-6">{post.excerpt}</p>
-        )}
+          {post.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
 
-        <div className="flex items-center gap-4 text-sm text-gray-600 mb-8">
-          {post.publishedAt && (
-            <time dateTime={post.publishedAt}>
-              Published {format(new Date(post.publishedAt), 'MMMM d, yyyy')}
-            </time>
-          )}
           {post.author && (
-            <div className="flex items-center gap-2">
+            <div className={styles.authorRow}>
               {post.author.image && (
-                <div className="relative w-8 h-8 rounded-full overflow-hidden">
+                <div className={styles.authorAvatar}>
                   <Image
-                    src={urlFor(post.author.image).width(32).height(32).url()}
+                    src={urlFor(post.author.image).width(48).height(48).url()}
                     alt={post.author.name}
                     fill
-                    className="object-cover"
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
               )}
-              <span>{post.author.name}</span>
+              <span className={styles.authorName}>{post.author.name}</span>
             </div>
           )}
         </div>
+      </section>
 
-        {post.mainImage && (
-          <div className="relative w-full h-96 md:h-[500px] rounded-lg overflow-hidden mb-8">
-            <Image
-              src={urlFor(post.mainImage).width(1200).height(630).url()}
-              alt={post.mainImage.alt || post.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 1200px"
-            />
+      {/* ── Cover image ── */}
+      {post.mainImage && (
+        <section className={styles.coverSection}>
+          <div className={styles.shellWide}>
+            <div className={styles.coverWrapper}>
+              <Image
+                src={urlFor(post.mainImage).width(1400).height(700).url()}
+                alt={post.mainImage.alt || post.title}
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+                sizes="(max-width: 768px) 100vw, 1280px"
+              />
+            </div>
           </div>
-        )}
-      </header>
-
-      {/* Content */}
-      <div className="prose prose-lg max-w-none">
-        {post.content && <PortableText content={post.content} />}
-      </div>
-
-      {/* Tags */}
-      {post.tags && post.tags.length > 0 && (
-        <div className="mt-12 pt-8 border-t">
-          <h3 className="text-sm font-semibold text-gray-700 mb-4">Tags</h3>
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag: string) => (
-              <span
-                key={tag}
-                className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
+        </section>
       )}
 
-      {/* Footer Navigation */}
-      <div className="mt-12 pt-8 border-t">
-        <Link
-          href="/blog"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800"
-        >
-          ← Back to Blog
-        </Link>
+      {/* ── Article content ── */}
+      <section className={styles.contentSection}>
+        <div className={styles.shell}>
+          {post.content && <PortableText content={post.content} />}
+
+          {post.tags && post.tags.length > 0 && (
+            <div className={styles.tagsSection}>
+              <p className={styles.tagsLabel}>Tags</p>
+              <div className={styles.tagsList}>
+                {post.tags.map((tag) => (
+                  <span key={tag} className={styles.tag}>{tag}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── Footer nav ── */}
+      <div className={styles.footerNav}>
+        <div className={styles.shell}>
+          <Link href="/blog" className={styles.footerBackLink}>← Back to Insights</Link>
+        </div>
       </div>
-    </article>
+    </main>
   )
 }
-

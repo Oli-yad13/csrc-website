@@ -1,0 +1,131 @@
+.prose {
+    font-size: 1.06rem;
+    line-height: 1.84;
+    color: rgba(34, 44, 61, 0.9);
+}
+
+.prose p {
+    margin: 0 0 1.5rem;
+}
+
+.prose p:last-child {
+    margin-bottom: 0;
+}
+
+.prose h1 {
+    margin: 2.4rem 0 0.9rem;
+    font-family: var(--font-sans);
+    font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--color-secondary);
+}
+
+.prose h2 {
+    margin: 2.2rem 0 0.85rem;
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-secondary);
+}
+
+.prose h3 {
+    margin: 1.8rem 0 0.7rem;
+    font-family: var(--font-sans);
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-secondary);
+}
+
+.prose h4 {
+    margin: 1.4rem 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.prose blockquote {
+    margin: 2rem 0;
+    padding: 1.1rem 1.4rem;
+    border-left: 3px solid var(--color-primary);
+    background: rgba(86, 127, 61, 0.06);
+    border-radius: 0 12px 12px 0;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: rgba(34, 44, 61, 0.84);
+}
+
+.prose ul {
+    margin: 0 0 1.5rem 1.25rem;
+    padding: 0;
+    list-style: disc;
+}
+
+.prose ol {
+    margin: 0 0 1.5rem 1.25rem;
+    padding: 0;
+    list-style: decimal;
+}
+
+.prose li {
+    margin-bottom: 0.45rem;
+    line-height: 1.72;
+}
+
+.prose strong {
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.prose em {
+    font-style: italic;
+}
+
+.prose code {
+    padding: 0.15em 0.45em;
+    border-radius: 6px;
+    background: rgba(22, 32, 51, 0.07);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.88em;
+    color: var(--color-secondary);
+}
+
+.prose a {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.18s ease;
+}
+
+.prose a:hover {
+    color: var(--color-primary);
+}
+
+/* Inline images */
+.inlineImage {
+    margin: 2.2rem 0;
+}
+
+.inlineImageInner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(210, 223, 198, 0.4);
+}
+
+.caption {
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(55, 69, 92, 0.7);
+    text-align: center;
+    font-style: italic;
+}
